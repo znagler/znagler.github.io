@@ -1,0 +1,13 @@
+body {font-family: Verdana, serif;color:sienna}
+h3 {
+    color: red;
+    text-align: left;
+}
+h4 {
+    color: blue;
+    text-align: center;
+}
+h5 {
+    color: green;
+    text-align: right;
+}
