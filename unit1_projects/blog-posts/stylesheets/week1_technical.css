@@ -1,0 +1,51 @@
+#fivethirtyeight{
+    background-color: #FDECD0;
+    padding-top: 10px;
+    padding-right: 50px
+}
+#duolingo{
+    background-color: #BDF1ED;
+    padding-top: 10px;
+    padding-left: 50px}
+#wolfram{
+    background-color: #FC7A5A;
+    padding-top: 10px;
+    padding-right: 50px
+    }
+footer {
+	font-size: 80%; 
+	text-align: center;
+	background-color: #F7F7F7;
+	padding-bottom: 5px;
+	padding-top: 10px
+}
+.domain_name {
+	font-size: 110%;
+    text-align: center
+}
+h1,h2 { text-align: center }
+body{font-family:arial, helvetica}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: gray;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: white;
+    text-decoration: none;
+}
+
