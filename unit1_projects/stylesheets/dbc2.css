@@ -1,9 +1,17 @@
 h1 { text-align: center }
-footer { text-align: center }
+footer {
+	font-size: 80%; 
+	text-align: center;
+	background-color: #F7F7F7;
+	padding-bottom: 5px;
+	padding-top: 10px
+}
 
 .bg{
+  height: auto;
   width: 100%;
   z-index: 0;
+  padding-bottom: 0px;
 }
 
 li{
@@ -20,4 +28,13 @@ div {
     padding-bottom: 25px;
     padding-right: 50px;
     padding-left: 50px;
+}
+
+.need{
+    background-color: #F7F7F7}
+
+.section_title{
+	font-size: 120%;
+	padding-left: 200px;
+	padding-bottom: 15px
 }
