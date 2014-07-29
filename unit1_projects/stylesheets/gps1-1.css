@@ -1,0 +1,94 @@
+
+body {
+    margin: 0 0;
+}
+h1{
+    text-align:center
+    }
+#photoheader{
+  background-image:url("http://s27.postimg.org/lfpiux3ir/handholding.jpg");
+  height:300px;
+  width:100%;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:100%;
+}
+#phototext{
+    position:absolute;
+    margin-top:100px;
+    text-align:center;
+    width:100%;
+}
+article{
+    width:70%;
+    margin-left:15%;
+}
+footer{
+    clear:both;
+    text-align:center;
+}
+
+header{
+    margin: 0 0 0 0;
+    height:50px;
+    width:100%;
+    background-color:#fbe5bb;
+    text-align:center;
+}
+header ul{
+    list-style-type:none;
+    padding-top:14px;
+    padding-left:25%;
+    padding-right: 25%;
+    margin-top:0;
+    margin-bottom:0;
+    
+}
+
+header ul li{
+    display:inline;
+    padding: 20px;
+}
+
+header a {
+font-size:110%;
+text-decoration:none;
+color:black;
+}
+
+header a:hover {
+background-color:white;
+}
+
+.articlephoto{
+    width:50%;
+    height:auto;
+    padding:1px;
+    border:1px solid #021a40;
+    margin-left:25%;
+}
+h2{
+    font-size:10px
+}
+h1,a,p{
+    font-family:Garamond;
+}
+
+@media screen and (max-width:750px) {
+header ul {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+}
+@media screen and (max-width:517px) {
+header {
+    display:none;
+}
+
+#photoheader {
+    height:200px;
+}
+#phototext {
+    margin-top:55px;
+}
+}

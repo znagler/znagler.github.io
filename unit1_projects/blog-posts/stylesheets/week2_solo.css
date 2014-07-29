@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'EntypoRegular';
+    src: url('font/Entypo-webfont.eot');
+    src: url('font/Entypo-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/Entypo-webfont.woff') format('woff'),
+         url('font/Entypo-webfont.ttf') format('truetype'),
+         url('font/Entypo-webfont.svg#EntypoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+h1{
+	text-align: center;
+	padding-top: 15px;
+	font-family: 'Lato',Helvetica;
+	color:white;
+}
+
+h2{
+	text-align: center;
+	padding-top: .5em;
+	font-family: 'Lato',Helvetica;
+	color:black;
+}
+
+
+
+#wrapper{
+	background-image:url('../images/sanseb.jpg');
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	background-position:center;
+	min-width: 960px;
+
+
+}
+
+
+#left{
+	background-color: white;
+	width:74%;
+	float:left;
+	margin-left: 3%;
+	padding: 10px;
+	opacity: .9;
+	min-height: 600px;
+	max-height: 80%;
+	border-radius: 10px;
+}
+#right{
+	background-color: white;
+	width:10%;
+	float:right;
+	margin-right: 3%;
+	margin-left:3%;
+	padding: 10px;
+	border-radius: 10px;
+	opacity: .7
+
+}
+
+.clear{
+	clear:both;
+}
+
+p{
+	font-family: 'Lato',Helvetica;
+}
+.rightboxtext{
+	text-align: center;
+	font-size: 1em;
+}
+footer{
+	text-align: center;
+	color: white
+	}
+
+
+a.week:link {
+    color: black;
+    text-decoration: none;
+}
+
+
+a.week:visited {
+    color: black;
+    text-decoration: none;
+}
+
+
+a.week:hover {
+    color: blue;
+    text-decoration: none
+}
+
+a.week:active {
+    color: blue;
+    text-decoration: none
+}
+#
+
+#home{
+	color:white;
+}
+
+#home:link {
+    color: white;
+    text-decoration: none;
+}
+
+
+#home:visited {
+    color: white;
+    text-decoration: none;
+}
+
+
+#home:hover {
+    color: blue;
+    text-decoration: none
+}
+
+#home:active {
+    color: blue;
+    text-decoration: none
+}
+
+#wireframe{
+	width:50%;
+	height:auto;
+	opacity: 1.0;
+	float:right;
+}
+
+#leftdivleft{
+	float:left;
+	color:black;
+	width:40%;
+	padding-left: 5%;
+	padding-right:5%;
+}
+
+
+
+
+
