@@ -1,0 +1,78 @@
+body {font-family: Verdana
+}
+
+#large{
+	margin:auto;
+	width: 400px;
+	height:auto;
+}
+img{
+	margin:auto;
+	width: 400px;
+	height:auto;
+}
+#left{
+	background-color: green;
+	float:left;
+	width:300px; 
+}
+
+
+#right{
+	background-color: red;
+	float:right;
+	width:100px; 
+}
+
+@media screen and (max-width:500px){
+	#container{
+		width:100%;
+	}
+	#left{
+	background-color: black;
+	width:100%; 
+	}
+
+
+	#right{
+	background-color: blue;
+	width:100%; 
+	}
+
+}
+
+/*
+@media screen and (max-width:300px){
+	#container{
+		width:100%;
+	}
+	#left{
+	background-color: white;
+	float:left;
+	width:75%; 
+	}
+
+
+	#right{
+	background-color: blue;
+	float:right;
+	width:25%; 
+	}
+
+}
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+

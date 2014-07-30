@@ -1,0 +1,26 @@
+
+ .image-right{
+		margin-right: 100px;
+        width:150px;
+        height:100px;
+        display: inline;
+        float: right;
+        margin-left: 50px
+    }
+
+.text-left{
+   	display: inline;
+   	margin-right:500px;
+
+    }
+
+
+.section{
+    	width:1200px;
+    	margin-bottom: 50px;
+    	padding-bottom:50px;
+    }
+
+h1, h3, h4{
+	text-align: center
+}
