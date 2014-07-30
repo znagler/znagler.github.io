@@ -1,11 +1,13 @@
 
  .image-right{
+        border-radius: 25px;
 		margin-right: 100px;
         width:150px;
         height:100px;
         display: inline;
         float: right;
-        margin-left: 50px
+        margin-left: 50px;
+        border:1px solid #021a40;
     }
 
 .text-left{
@@ -26,13 +28,17 @@ h1, h3, h4{
 	text-align: center
 }
 
+body{
+    font-family: Garamond;
+    background-color:#BA5758;
+}
 @media screen and (max-width:720px){
     .section{
         display:block;
         width:100%;
         float:none;
-        margin-bottom: 50px;
-        padding-bottom:50px;
+        margin-bottom: 10px;
+        padding-bottom:10px;
         margin-left: 10px;
         margin-right:10px;
     }
@@ -43,13 +49,17 @@ h1, h3, h4{
         margin:auto;
         width:150px;
         height:100px;
+        margin-bottom: 40px;
     }
 
 .text-left{
     display:block;
     margin:auto;
-    font-size: 12px
+    font-size: 14px
 
+    }
+    li{
+        font-size: 14px
     }
 
 
