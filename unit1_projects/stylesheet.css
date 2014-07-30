@@ -16,11 +16,33 @@
 
 
 .section{
-    	width:1200px;
+    	width:960px;
     	margin-bottom: 50px;
     	padding-bottom:50px;
     }
 
 h1, h3, h4{
 	text-align: center
+}
+
+@media screen and (max-width:720px){
+    .section{
+        width:100%;
+        margin-bottom: 50px;
+        padding-bottom:50px;
+    }
+
+ .image-right{
+        margin:auto;
+        width:150px;
+        height:100px;
+    }
+
+.text-left{
+    margin:auto;
+    font-size: 10px
+
+    }
+
+
 }
