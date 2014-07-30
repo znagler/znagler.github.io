@@ -28,7 +28,9 @@ h1, h3, h4{
 
 @media screen and (max-width:720px){
     .section{
+        display:block;
         width:100%;
+        float:none;
         margin-bottom: 50px;
         padding-bottom:50px;
         margin-left: 10px;
@@ -36,12 +38,15 @@ h1, h3, h4{
     }
 
  .image-right{
+    display:block;
+    float:none;
         margin:auto;
         width:150px;
         height:100px;
     }
 
 .text-left{
+    display:block;
     margin:auto;
     font-size: 10px
 
