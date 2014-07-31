@@ -2,12 +2,14 @@
  .image-right{
         border-radius: 25px;
 		margin-right: 100px;
-        width:150px;
-        height:100px;
+        width:225px;
+        height:150px;
         display: inline;
         float: right;
         margin-left: 50px;
+        margin-bottom: 50px;
         border:1px solid #021a40;
+        vertical-align: middle
     }
 
 .text-left{
@@ -19,7 +21,7 @@
 
 .section{
     	width:960px;
-    	margin-bottom: 50px;
+    	margin-bottom: 70px;
     	padding-bottom:50px;
         margin-left: 50px
     }
@@ -27,6 +29,8 @@
 h1, h3, h4{
 	text-align: center
 }
+
+h4{padding-bottom: 40px}
 
 body{
     font-family: Garamond;
@@ -47,8 +51,8 @@ body{
     display:block;
     float:none;
         margin:auto;
-        width:150px;
-        height:100px;
+        width:225px;
+        height:150px;
         margin-bottom: 40px;
     }
 
