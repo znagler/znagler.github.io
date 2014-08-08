@@ -1,0 +1,64 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>
+			Week 4 Technical Blog 
+		</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/week4_technical.css">
+	<link href="http://fonts.googleapis.com/css?family=Audiowide|Quicksand:300,400,700|Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h1> Technical Blog </h1>
+			</div>
+			<div id="content">
+				<div id="right">
+					<p class="rightboxtext"> Archive</p>
+					<p class="rightboxtext"><a class="week" href="week1_technical.html"> week 1 </a></p>
+					<p class="rightboxtext"><a class="week" href="week2_technical.html"> week 2 </a></p>
+					<p class="rightboxtext"><a class="week" href="week3_technical.html"> week 3 </a></p>
+					<p class="rightboxtext"><a class="week" href=""> week 4 </a></p>
+				</div>
+				<div id="left">
+					<h2> The Ruby group_by method </h2>
+ 					<p>
+						When starting out with Ruby, the most intuitive way to create a hash is by spelling out key-value pairs, so something like <em> coolHash={ 1 => 4, 2 => 5, 3 => 6} </em>.  This can be slow and boring, so in many cases a loop is a better approach.  For example, <em> for n in 1...9 do coolHash[n]=n+3 end </em> hashes out the same pattern, but for even more integers.  Shockingly, there are some cases where there is an even better method, and that method is <em> group_by </em>. 
+
+
+					</p>
+
+					<img src="images/ruby.jpg" class="inblog">
+
+					<p>
+						We can see how it works with an example.</p>
+					<hr>
+					<p>
+
+						Let's say you have an array of integers 1 through 29 and you want to split them into groups depending on their remainder when divided by 3.  The method <em> group_by</em> can do this beautifully with a hash, with the key being the remainder, and the value being an array of all the integers that have that remainder.  Since there are only 3 possible remainders (0, 1 or 2), there should only be 3 items in the hash, so check it out:
+					</p>
+
+					<img src="images/group_by.png" class="inblog2">
+					<p>As you can see, in one short line of code, we produced the output as described.  Our method is plugging each item of the original array into the condition and then grouping those items by the result of the condition.  Similarly, if we want to see whether the integer has remainder 1, we can change <em> |n| n%3 </em> to <em> |n| n%3===1</em>, as below:
+					</p>
+					<img src="images/group_by2.png" class="inblog2">
+					<p>Unsurprisingly, the result has two items, true and false, because an integer is either has remainder 1 or it doesn't.
+					<hr>
+					<p>
+						It's not difficult to think of more examples where <em> group_by</em> could be useful.  Maybe you have a set of user birthdays and want to group them by year, or year-month.  This is effortless with <em> group_by</em>.  Or maybe you just wrote a method manipulates a string, but you aren't sure how it will handle each case, or if it ever errors.  Now, with one line of code, (something like <em> arr.group_by {|n| manipulator(n)} </em>) you can start with an array containing all the strings in question, and end up with a cleanly organized hash of how the method operated on each string.  Whatever the scenario, <em>group_by</em> can assist you, and if it can't, try to throw it in there anyways because it's so fun to use.
+
+
+					</p>
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> <br>Posted by: Zack Nagler
+				<br>July 2014
+				<br>zachary.nagler@gmail.com
+				<br><a id="home"href="../../index.html"> home </a>
+			</p>
+		</div>
+	</body>
+</html>
