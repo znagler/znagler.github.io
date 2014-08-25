@@ -1,11 +1,13 @@
-class Snowboard
-	def initialize(brand,length)
-		@brand=brand
-		@length=length
+class Dog
+	@@howmanydogs=0
+	def initialize(name)
+		@name=name
+		@@howmanydogs+=1
 	end
-
-	def jump
-		puts "You jumped!"
-	end
-
 end
+
+p $0
+p $.
+p $*
+p $$
+p $?

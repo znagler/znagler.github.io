@@ -1,0 +1,63 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>
+			Week 6 Technical Blog 
+		</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/week4_technical.css">
+	<link href="http://fonts.googleapis.com/css?family=Audiowide|Quicksand:300,400,700|Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h1> Technical Blog </h1>
+			</div>
+			<div id="content">
+				<div id="right">
+					<p class="rightboxtext"> Archive</p>
+					<p class="rightboxtext"><a class="week" href="week1_technical.html"> week 1 </a></p>
+					<p class="rightboxtext"><a class="week" href="week2_technical.html"> week 2 </a></p>
+					<p class="rightboxtext"><a class="week" href="week3_technical.html"> week 3 </a></p>
+					<p class="rightboxtext"><a class="week" href="week4_technical.html"> week 4 </a></p>
+					<p class="rightboxtext"><a class="week" href="week5_technical.html"> week 5 </a></p>
+					<p class="rightboxtext"><a class="week" href=""> week 6 </a></p>
+				</div>
+				<div id="left">
+					<h2> Ruby Variables </h2>
+
+
+						<h3>Local variables</h3>
+						<p>  Local variables are perhaps the most fundamental of ruby.  They begin with an _ or a lower-case letter, and they store data locally.  If you declare a variable inside a def or a class, for example (except in some cases explained below), the scope of that variable is limited to where it is declared.
+						</p>
+
+						<h3>Instance variables</h3>
+						<p>  Instance variables are a really useful component of classes.  They are easily spotted, with a @ in front of the name (like @foo), and are specific to instances of an object.  A simple example of this would be in a "Dog" class, like below.
+						</p>
+
+						<img src="images/dog2.png" class="inblog">
+						<p>Here, each Dog object will have its own particular @name, and the @name will be assigned to whatever name the dog is given when initialized.  A second dog created will not accesss the @name from the first, because they are stored distinctly, unlike...
+						</p>
+
+
+						<h3>Class variables</h3>
+						<p>
+							Class variables are not specific to an instance to a class but to the class itself.  In this case, the Dog class intends to keep track of how many dogs are created.  Since it doesn't really make sense for each dog instance to have its own variable for this data, it is stored in a class variable.  If you didn't notice, class variables have two @@s, like @@howmanydogs.
+						</p>
+
+						<img src="images/dog1.png" class="inblog">
+						<h3>Global variables</h3>
+						<p> Global variables can be set with a $ before the name, such as $foo.  Once defined global variables will be accessible from anywhere. Overuse of global variables can cause a debugging nightmare if the same global variable name is used in two completely different parts of a large program, so they are best used sparingly.  There are some built-in highly useful global variables, such as "$0", which holds the name of the ruby script file.  A full list can be found <a href="http://www.rubyist.net/~slagell/ruby/globalvars.html"> here </a>.
+						</p>  
+
+			</div>
+		</div>
+		<div id="footer">
+			<p> <br>Posted by: Zack Nagler
+				<br>July 2014
+				<br>zachary.nagler@gmail.com
+				<br><a id="home"href="../../index.html"> home </a>
+			</p>
+		</div>
+	</body>
+</html>
