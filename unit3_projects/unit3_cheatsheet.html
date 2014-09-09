@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Regex Cheatsheet</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/unit3_cheatsheet.css">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata|Aldrich">
+</head>
+<body>
+	<div id="wrapper">
+		<h1> Basic Regex Cheatsheet</h1>
+		<table>
+		 <tr class="top">
+		   <td class="toprow">The string...</td>
+		   <td class="toprow">Scanning Regex...</td> 
+		   <td class="toprow">Yields...</td> 
+		   <td class="toprow">Because...</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"apple"</td>
+		   <td>/ap/</td> 
+		   <td>["ap"]</td> 
+		   <td>1 instance of "ap"</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"grape apple"</td>
+		   <td>/ap/</td> 
+		   <td>["ap", "ap"] </td> 
+		   <td>2 instances of "ap"</td>
+		 </tr>	 
+		 <tr class="even">
+		   <td>"grape apple"</td>
+		   <td>/g./</td> 
+		   <td>["gr"]</td> 
+		   <td>. is any char</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"grape apple"</td>
+		   <td>/g.*/</td> 
+		   <td>["grape apple"]</td> 
+		   <td>.* is any amt of any char</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"grape apple"</td>
+		   <td>/p+/</td> 
+		   <td>["p","pp"]</td> 
+		   <td>+ is one or more of given char, consecutively</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"grape apple"</td>
+		   <td>/\s/</td> 
+		   <td>[" "]</td> 
+		   <td>\s is space</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"Nintendo 64"</td>
+		   <td>/[a-z]/</td> 
+		   <td>["i", "n", "t", "e", "n", "d", "o"]</td> 
+		   <td>[a-z] accepts any lowercase letter</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"Nintendo 64"</td>
+		   <td>/[A-Za-z]</td> 
+		   <td>["N", "i", "n", "t", "e", "n", "d", "o"] </td> 
+		   <td>[A-Za-z] accepts any letter</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"Nintendo 64"</td>
+		   <td>/[A-Za-z]+/</td> 
+		   <td>["Nintendo"]</td> 
+		   <td>given char for + is any letter</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"Nintendo 64"</td>
+		   <td>/[a-zA-Z]{3}> 
+		   <td> ["Nin", "ten"] </td> 
+		   <td> {3} allows 3 of given char </td>
+		 </tr>
+		 <tr class="even">
+		   <td>"Nintendo 64"</td>
+		   <td>/[a-zA-Z]{2,3}</td> 
+		   <td>["Nin", "ten","do"]</td> 
+		   <td>{2,3} allows 2 or 3 of given char</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"Nintendo 64"</td>
+		   <td>/^M/</td> 
+		   <td>[] </td> 
+		   <td>with ^ only searches front of string</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"Nintendo 64"</td>
+		   <td>/^N/</td> 
+		   <td>["N"]</td> 
+		   <td>with ^ only searches front of string </td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"Nintendo 64"</td>
+		   <td>/endo$/</td> 
+		   <td>[] </td> 
+		   <td>with $ only searches end of string</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"Nintendo 64"</td>
+		   <td>/endo 64$/</td> 
+		   <td>["do 64"]</td> 
+		   <td>with $ only searches end of string</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"Nintendo 64"</td>
+		   <td>/0-9]+</td> 
+		   <td>["64"] </td> 
+		   <td>[0-9] accepts any single digit</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"color"</td>
+		   <td>/colou?r/</td> 
+		   <td>["color"]</td> 
+		   <td>? allows 0 or 1 instance of given char</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"colour"</td>
+		   <td>/colou?r/</td> 
+		   <td>["colour"] </td> 
+		   <td>? allows 0 or 1 instance of given char</td>
+		 </tr>
+		 <tr class="even">
+		   <td>"gray"</td>
+		   <td>/gr[ae]y/</td> 
+		   <td>["gray"]</td> 
+		   <td>accepts any one char in closed brackets</td>
+		 </tr>
+		 <tr class="odd">
+		   <td>"grey"</td>
+		   <td>/gr[ae]y</td> 
+		   <td>["grey"] </td> 
+		   <td>accepts any one char in closed brackets</td>
+		 </tr>	
+		 <tr class="even">
+		   <td>"$99.00"</td>
+		   <td>/\$99\.00/</td> 
+		   <td>["$99.00"]</td> 
+		   <td>\ escapes given char so is needed for special chars</td>
+		 </tr>
+		 </tr>				 
+		</table>
+	</div>	
+</body>
+</html>
