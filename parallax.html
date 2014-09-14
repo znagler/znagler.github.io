@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Parallax test</title>
+	<link rel="stylesheet" type="text/css" href="parallax.css">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Quicksand">
+	<script>
+	function parallax(){
+ 	var prlx100 = document.getElementById('prlx100');
+ 	var prlx200 = document.getElementById('prlx200');
+  	var prlx300 = document.getElementById('prlx300');
+  	var prlx400 = document.getElementById('prlx400');
+ 	var prlx500 = document.getElementById('prlx500');
+  	prlx100.style.top=((-window.pageYOffset/3)+100)+'px';
+  	prlx200.style.top=((-window.pageYOffset/2)+200)+'px';
+  	prlx300.style.top=((-window.pageYOffset)+300)+'px';
+  	prlx400.style.top=((-window.pageYOffset/6)+400)+'px';
+  	prlx500.style.top=((-window.pageYOffset/4)+500)+'px';
+	}
+	window.addEventListener("scroll",parallax,false);
+	</script>
+</head>
+<body>
+	<div id='wrapper'>
+		<div id="black">
+			<p id="transparent_text">THIS IS A TEST THAT WONT WORK</p>
+		</div>
+		<div id="prlx100"></div>
+		<div id="prlx200"></div>
+		<div id="prlx300"></div>
+		<div id="prlx400"></div>
+		<div id="prlx500"></div>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+		<h1>Parallax test</h1>
+	</div>
+</body>
+</html>
