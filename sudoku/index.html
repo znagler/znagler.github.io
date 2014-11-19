@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Sudoku Solver</title>
+  <link href="stylesheets/bootstrap.css" rel="stylesheet">
+  <link href="stylesheets/sudoku.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="sudoku.js"></script>
+  <script type="text/javascript" src="solver.js"></script>
+
+
+</head>
+
+<body>
+  <div class="container" id="top_page_container">
+    <center><h2>Sudoku Solver</h2></center>
+    <div class="container" id="impossible_board_alert"></div>
+    <div class="container" id="table_container">
+    </div>
+    <div class="container" id="button_container">
+      <button id="solve_button" type="button" class="btn btn-primary">Solve! </button>
+    </div>
+  </div>
+  <div class="container" id="bottom_page_container">
+    <div class="row">
+      <div class="container col-xs-6" id="original-board"></div>
+      <!-- <div class="col-sm-2" id="board-separator"></div> -->
+      <div class="container col-xs-6" id="solved-board"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <hr>
+    
+
+  </div>
+
+
+
+</body>
+
+</html>
