@@ -7,11 +7,14 @@
 /*
  * -- BASE STYLES --
  */
+
+
 body {
     line-height: 1.7em;
     color: white;
     font-size: 13px;
 }
+
 
 .my-name{
     color:#33322D;
@@ -20,6 +23,14 @@ body {
 .navicon{
     color:white;
     font-size: 3em;
+}
+
+.project,.content-head{
+    color:#001860
+}
+
+.group-size{
+    color:#565653;
 }
 
 h1,
@@ -246,6 +257,8 @@ a.pure-button-primary {
     color: #EFEFEF;
 }
 
+
+
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some
@@ -306,11 +319,6 @@ a.pure-button-primary {
 i:hover {
   color: #777 ;
 }
-
-.project{
-    color:blue;
-}
-
 
 
 /* Don't think I'll need these:
