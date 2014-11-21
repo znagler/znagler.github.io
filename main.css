@@ -15,8 +15,8 @@ body {
 
 .my-name{
     color:#33322D;
-
 }
+
 .navicon{
     color:white;
     font-size: 3em;
@@ -89,7 +89,7 @@ label {
 
 a.pure-button-primary {
     background: white;
-    color: #871D1C;
+    color: #565653;
     border-radius: 5px;
     font-size: 120%;
 }
@@ -180,7 +180,7 @@ a.pure-button-primary {
 
 /* This is the subheading that appears on the blue section */
 .splash-subhead {
-    color: white;
+    color:#33322D;
     letter-spacing: 0.05em;
     opacity: 0.8;
 }
