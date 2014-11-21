@@ -94,6 +94,14 @@ a.pure-button-primary {
     font-size: 120%;
 }
 
+.body-text{
+    color: #565653;
+}
+
+
+.body-text:hover{
+    color: black
+}
 
 /*
  * -- MENU STYLES --
