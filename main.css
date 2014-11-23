@@ -9,12 +9,6 @@
  */
 
 
-body {
-    line-height: 1.7em;
-    color: white;
-    font-size: 13px;
-}
-
 
 .my-name{
     color:#33322D;
@@ -24,6 +18,11 @@ body {
     color:white;
     font-size: 3em;
 }
+
+i:hover {
+  color: #777 ;
+}
+
 
 .project,.content-head{
     color:#001860
@@ -45,10 +44,6 @@ label {
     font-family: 'Muli';
 }
 
-.pure-img-responsive {
-    max-width: 100%;
-    height: auto;
-}
 
 /*
  * -- LAYOUT STYLES --
@@ -220,10 +215,10 @@ a.pure-button-primary {
     width: 100%;
     min-height: 12%;
     z-index: 2;
-    background: white;
+    background: #EFEFEF;
 }
 
-/*=========== EDUCATION SECTION ========================================================*/
+/*=========== PROJECTS SECTION ========================================================*/
 
 .icon-col {
 	color: #33322D;
@@ -237,19 +232,19 @@ a.pure-button-primary {
 	color:#565653;
 
 }
-	.resume-list > ul {
-		color: #565653;
-	}
-	.resume-list > h2 {
-		color: #33322D;
-		margin-bottom: 0px;
-		/*font-weight: normal;*/
-	}
-	.resume-list > h3 {
-		color: #565653;
-		font-weight: normal;
-		margin-top: 0px;
-	}
+.resume-list > ul {
+	color: #565653;
+}
+.resume-list > h2 {
+	color: #33322D;
+	margin-bottom: 0px;
+	/*font-weight: normal;*/
+}
+.resume-list > h3 {
+	color: #565653;
+	font-weight: normal;
+	margin-top: 0px;
+}
 
 
 .footer {
@@ -316,9 +311,6 @@ a.pure-button-primary {
 
 }
 
-i:hover {
-  color: #777 ;
-}
 
 
 /* Don't think I'll need these:
