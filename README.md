@@ -1,4 +1,3 @@
-znagler.github.io
-=================
+http://znagler.github.io
+Zack Nagler's portfolio
 
-My DBC phase 0 github site
