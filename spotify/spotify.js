@@ -1,25 +1,31 @@
 $(document).ready(function() {
-	var myDataRef = new Firebase('https://theremouse.firebaseio.com/');
-	var query = myDataRef.orderByChild("timestamp").limitToLast(100);
+  	var myDataRef = new Firebase('https://theremouse.firebaseio.com/');
+  	// myDataRef.remove()
+	var theremins = {};
+	var userId = Math.floor(Math.random() * 1000000) + 1;
+
 	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
-	theremin = new Theremin(audioCtx);
 
 	$(document).mousemove(function(event) {
-		$(".x").text("X: " + event.pageX); 
+		$(".x").text("X: " + event.pageX);
 		$(".y").text("Y: " + event.pageY);
 
-		// console.log(Math.ceil(event.pageX/100))
-		// theremin.update(Math.ceil(event.pageX/100)*100, Math.ceil(event.pageY/100)*100);
-		// theremin2.update(event.pageX*.2,event.pageY);
-		theremin.update(event.pageX, event.pageY);
-		var counter = 0
-		myDataRef.push({pitch: theremin.pitch, volume: theremin.volume});
-		query.on('child_added', function(snapshot) {
-			counter++
-			console.log(snapshot.val())
-		});
+		myDataRef.push({xCoord: event.pageX, yCoord: event.pageY, userId: userId});
+
 	});
+
+
+	myDataRef.on('child_added', function(snapshot) {
+	if (!theremins[userId]) {
+		var theremin = new Theremin(audioCtx);
+		theremins[userId.toString()] = theremin;
+	} 
+	var x = snapshot.val().xCoord;
+	var y = snapshot.val().yCoord;
+	theremins[userId].update(x, y);
+
+});
 
 });
 
