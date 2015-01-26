@@ -6,59 +6,39 @@ $(document).ready(function() {
 	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
 	$(document).mousemove(function(event) {
-		$(".x").text("X: " + event.pageX);
-		$(".y").text("Y: " + event.pageY);
+    var x = event.pageX - 900;
+    var y = event.pageY;
+		$(".x").text("X: " + (x + 900));
+		$(".y").text("Y: " + y);
 
-		myDataRef.push({xCoord: event.pageX, yCoord: event.pageY, userId: userId});
+		myDataRef.push({xCoord: x, yCoord: y, userId: userId});
+
+    updateView(x, y);
 	});
 
 	myDataRef.on('child_added', function(snapshot) {
-    
-	if (!theremins[userId]) {
-		var theremin = new Theremin(audioCtx);
-		theremins[userId.toString()] = theremin;
-	} 
-	var x = snapshot.val().xCoord;
-	var y = snapshot.val().yCoord;
-	theremins[userId].update(x, y);
-
- //  $('.line1').hover(function() {
- //      $('body').css('background-color', 'f8f087').fadeIn(3000);
- //  })
- //  $('.line2').hover(function() {
- //    $("body").fadeIn('slow').css('background-color', 'b7e3c0');
- //  })
- //  $('.line3').hover(function() {
- //    $("body").fadeIn('slow').css('background-color', 'ffc48c');
- //  })
- //  $('.line4').hover(function() {
- //    $("body").fadeIn('slow').css('background-color', 'dbbae5');
- //  })
- // $('.line5').hover(function() {
- //    $("body").fadeIn('slow').css('background-color', 'f39dd4');
- //  })
- //   $('.line6').hover(function() {
- //    $("body").fadeIn('slow').css('background-color', 'eecaf5');
- //  })
- //     $('.line7').hover(function() {
- //    $("body").fadeIn('slow').css('background-color', '95fefd');
- //  })
-
-      
-  $('body').mousemove(function(event) {
-    var width = $('body').width(),
-     height = $('body').height(),
-     axisX = event.pageX,
-     axisY = event.pageY;
- 
-    var hue = Math.floor(axisX / width * 360),
-     saturation = Math.floor(axisY / height * 100),
-     lightness = Math.floor(axisY / height * 100);
- 
-    $('body').css('background', 'hsl(' + hue + ',' + saturation + '%, ' + lightness + '%)');
+    var userId = snapshot.val().userId;
+  	if (!theremins[userId]) {
+  		var theremin = new Theremin(audioCtx);
+  		theremins[userId.toString()] = theremin;
+  	}
+  	var x = snapshot.val().xCoord;
+  	var y = snapshot.val().yCoord;
+  	theremins[userId].update(x, y);
   });
 
+  // clean the database every 5 seconds
+  // it's only used for the real time polyphonic feature
+  setInterval(function() {myDataRef.remove()}, 5000)
 });
 
-});
+function updateView(axisX, axisY) {
+  var width = $('body').width();
+  var height = $('body').height();
 
+  var hue = Math.floor(axisX / width * 360);
+  var saturation = Math.floor(axisY / height * 100);
+  var lightness = Math.floor(axisY / height * 100);
+
+  $('body').css('background', 'hsl(' + hue + ',' + saturation + '%, ' + lightness + '%)');
+}
