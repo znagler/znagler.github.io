@@ -1,11 +1,49 @@
 Global = {}
 $( document ).ready(function(){
-
-  console.log("test")
   var o = {i1: 1,i2: 2,i3: 3,i4: 4}
 
-	setPredictButton()
+  setUpOccupationDropdown()
+  $('.ui.dropdown').dropdown();
+  setPredictButton()
 });
+
+function setUpOccupationDropdown(){
+  var html = ""
+  Global.occupations.forEach(function(str){
+    var strMod = str.replace(/ /g,"*")
+    html += "<option value="+strMod+">"
+    + str
+    + "</option>"
+  })
+  $('.occupation-dropdown').html(html)
+
+}
+
+function setPredictButton(){
+	$( ".predict" ).click(function( event ) {
+	  event.preventDefault();
+	  var i1 = $('.i1').val().toUpperCase()
+	  var i2 = $('.i2').dropdown('get value')
+	  var i3 = $('.i3').dropdown('get value').split('*').join(' ')
+	  var i4 = $('.i4').val()
+	  var o = {i1: i1,i2: i2,i3: i3,i4: i4}
+	  console.log(o)
+	  $.getJSON( "http://znagler.pythonanywhere.com",o,displayResults)
+
+
+	});
+}
+
+function comparator(a,b){
+  return b[1] - a[1]
+}
+function displayResults(data){
+  results  = data.results[0]
+  var candsWithProbs = Object.keys(results).map(function(key){return [Global.cands[+key.slice(1)],results[key]]})
+  // console.log(candsWithProbs)
+  console.log(candsWithProbs.sort(comparator))
+
+}
 
 Global.cands = [
 'Bush, Jeb',
@@ -32,27 +70,255 @@ Global.cands = [
 ]
 
 
-function setPredictButton(){
-	console.log("set")
-	$( ".predict" ).click(function( event ) {
-	  event.preventDefault();
-	  var i1 = $('#i1').val()
-	  var i2 = $('#i2').val()
-	  var i3 = $('#i3').val()
-	  var i4 = $('#i4').val()
-	  var o = {i1: i1,i2: i2,i3: i3,i4: i4}
-	  console.log(o)
-	  $.getJSON( "http://znagler.pythonanywhere.com",o,displayResults)
-	});
-}
-
-function comparator(a,b){
-  return b[1] - a[1]
-}
-function displayResults(data){
-  results  = data.results[0]
-  var candsWithProbs = Object.keys(results).map(function(key){return [Global.cands[+key.slice(1)],results[key]]})
-  // console.log(candsWithProbs)
-  console.log(candsWithProbs.sort(comparator))
-
-}
+Global.occupations = [
+'ACCOUNT MANAGER',
+'ACCOUNTANT',
+'ACCOUNTING',
+'ACTOR',
+'ADMINISTRATION',
+'ADMINISTRATIVE ASSISTANT',
+'ADMINISTRATOR',
+'ADVERTISING',
+'ADVISOR',
+'AGRICULTURE',
+'AIRLINE PILOT',
+'ANALYST',
+'ANESTHESIOLOGIST',
+'ARCHITECT',
+'ARTIST',
+'ATTORNEY',
+'AUTHOR',
+'BANKER',
+'BANKING',
+'BOOKKEEPER',
+'BROKER',
+'BUILDER',
+'BUSINESS',
+'BUSINESS ANALYST',
+'BUSINESS EXECUTIVE',
+'BUSINESS MANAGER',
+'BUSINESS OWNER',
+'BUSINESSMAN',
+'C.E.O.',
+'CAREGIVER',
+'CARPENTER',
+'CASHIER',
+'CEO',
+'CFO',
+'CHAIRMAN',
+'CHEMIST',
+'CHIEF EXECUTIVE OFFICER',
+'CHIROPRACTOR',
+'CIVIL ENGINEER',
+'CLERGY',
+'CLERK',
+'CLINICAL PSYCHOLOGIST',
+'CLINICAL SOCIAL WORKER',
+'COLLEGE PROFESSOR',
+'COMMERCIAL REAL ESTATE',
+'COMMUNICATIONS',
+'COMPUTER PROGRAMMER',
+'CONSTRUCTION',
+'CONSULTANT',
+'CONSULTING',
+'CONTRACTOR',
+'CONTROLLER',
+'COO',
+'COUNSELOR',
+'CPA',
+'CRNA',
+'CTO',
+'CUSTOMER SERVICE',
+'DATABASE ADMINISTRATOR',
+'DENTIST',
+'DESIGNER',
+'DEVELOPER',
+'DIGITAL',
+'DIRECTOR',
+'DIRECTOR OF OPERATIONS',
+'DISABLED',
+'DISABLED VETERAN',
+'DOCTOR',
+'DRIVER',
+'ECONOMIST',
+'EDITOR',
+'EDUCATION',
+'EDUCATOR',
+'ELECTRICAL ENGINEER',
+'ELECTRICIAN',
+'ENGINEER',
+'ENGINEERING',
+'ENTREPRENEUR',
+'ESTIMATOR',
+'EXECUTIVE',
+'EXECUTIVE ASSISTANT',
+'EXECUTIVE DIRECTOR',
+'FACULTY',
+'FARMER',
+'FARMING',
+'FILMMAKER',
+'FINANCE',
+'FINANCIAL ADVISOR',
+'FINANCIAL ANALYST',
+'FINANCIAL PLANNER',
+'FINANCIAL SERVICES',
+'FIREFIGHTER',
+'FLIGHT ATTENDANT',
+'FOUNDER',
+'FUNDRAISER',
+'GENERAL CONTRACTOR',
+'GENERAL MANAGER',
+'GEOLOGIST',
+'GEOPHYSICIST',
+'GRADUATE STUDENT',
+'GRAPHIC DESIGNER',
+'HEALTH CARE',
+'HEALTHCARE',
+'HOMEMAKER',
+'HOUSEWIFE',
+'HUMAN RESOURCES',
+'INFO REQUESTED',
+'INFORMATION REQUESTED',
+'INFORMATION REQUESTED PER BEST EFFORTS',
+'INFORMATION TECHNOLOGY',
+'INSTRUCTOR',
+'INSURANCE',
+'INSURANCE AGENT',
+'INSURANCE BROKER',
+'INSURANCE SALES',
+'INTERIOR DESIGNER',
+'INVESTMENT ADVISOR',
+'INVESTMENT BANKER',
+'INVESTMENTS',
+'INVESTOR',
+'IT',
+'IT CONSULTANT',
+'IT MANAGER',
+'LABORER',
+'LANDLORD',
+'LANDMAN',
+'LAW PROFESSOR',
+'LAWYER',
+'LEGAL ASSISTANT',
+'LETTER CARRIER',
+'LIBRARIAN',
+'M.D.',
+'MACHINIST',
+'MANAGEMENT',
+'MANAGEMENT CONSULTANT',
+'MANAGER',
+'MANAGING DIRECTOR',
+'MANAGING PARTNER',
+'MANUFACTURING',
+'MARKETING',
+'MARKETING DIRECTOR',
+'MARKETING MANAGER',
+'MASSAGE THERAPIST',
+'MD',
+'MECHANIC',
+'MECHANICAL ENGINEER',
+'MEDICAL DOCTOR',
+'MILITARY',
+'MINISTER',
+'MOM',
+'MUSICIAN',
+'NONE',
+'NOT EMPLOYED',
+'NURSE',
+'NURSE PRACTITIONER',
+'OCCUPATIONAL THERAPIST',
+'OFFICE MANAGER',
+'OPERATIONS MANAGER',
+'OPERATOR',
+'OPHTHALMOLOGIST',
+'OPTOMETRIST',
+'ORTHODONTIST',
+'OWNER',
+'PAINTER',
+'PARALEGAL',
+'PARTNER',
+'PASTOR',
+'PEDIATRICIAN',
+'PHARMACIST',
+'PHOTOGRAPHER',
+'PHYSICAL THERAPIST',
+'PHYSICIAN',
+'PHYSICIAN ASSISTANT',
+'PHYSICIST',
+'PILOT',
+'PLUMBER',
+'POLICE OFFICER',
+'PRESIDENT',
+'PRESIDENT & CEO',
+'PRESIDENT/CEO',
+'PRINCIPAL',
+'PRODUCER',
+'PRODUCT MANAGER',
+'PROFESSOR',
+'PROGRAM MANAGER',
+'PROGRAMMER',
+'PROJECT COORDINATOR',
+'PROJECT MANAGER',
+'PROPERTY MANAGEMENT',
+'PROPERTY MANAGER',
+'PSYCHIATRIST',
+'PSYCHOLOGIST',
+'PSYCHOTHERAPIST',
+'PUBLIC RELATIONS',
+'PUBLISHER',
+'R.N.',
+'RANCHER',
+'REAL ESTATE',
+'REAL ESTATE AGENT',
+'REAL ESTATE APPRAISER',
+'REAL ESTATE BROKER',
+'REAL ESTATE DEVELOPER',
+'REAL ESTATE DEVELOPMENT',
+'REAL ESTATE INVESTOR',
+'REAL ESTATE SALES',
+'REALTOR',
+'REFUSED',
+'REGISTERED NURSE',
+'REQUESTED PER BEST EFFORTS',
+'RESEARCHER',
+'RESTAURANT OWNER',
+'RETAIL',
+'RETIRED',
+'RETIRED TEACHER',
+'RN',
+'SALES',
+'SALES ASSOCIATE',
+'SALES MANAGER',
+'SALESMAN',
+'SCIENTIST',
+'SECRETARY',
+'SECURITY',
+'SELF',
+'SELF EMPLOYED',
+'SELF-EMPLOYED',
+'SENIOR MANAGER',
+'SENIOR VICE PRESIDENT',
+'SMALL BUSINESS OWNER',
+'SOCIAL WORKER',
+'SOFTWARE',
+'SOFTWARE DEVELOPER',
+'SOFTWARE ENGINEER',
+'STORE MANAGER',
+'STRATEGIST',
+'STUDENT',
+'SUPERVISOR',
+'SURGEON',
+'SYSTEMS ENGINEER',
+'TEACHER',
+'TECHNICAL WRITER',
+'TECHNICIAN',
+'THERAPIST',
+'TRUCK DRIVER',
+'UNEMPLOYED',
+'VETERINARIAN',
+'VICE PRESIDENT',
+'VOLUNTEER',
+'VP',
+'WEB DEVELOPER',
+'WRITER'
+]
