@@ -1,108 +1,28 @@
-body{
-  background-color: #FAF5EB;
-}
-
-input {
-  margin: 0px 0px 0px 0px;
-  width: 34px;
-  height: 34px;
-  border: none;
-  text-align: center;
-  font-size: 18px;
-}
-
-#top_page_container {
-  text-align: center;
-  text-decoration: underline;
-}
-
-
-
-#solve_button{
-  /*margin-top: 10px;*/
-  width: 100px;
-}
-
-#button_container button{
+svg {
+  /*border:1px solid #f0f;*/
+  margin: auto;
   display: block;
-  margin: auto;
-  margin-top: 20px;
 }
-
-body{
-  min-width: 800px;
-}
-#table_container table{
-  margin: auto;
-  margin-top: 20px;
-}
-
-#table_container td {
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  font-size: 18px;
-}
-
-#table_container td {
-  text-align: center;
-  font-size: 18px;
-}
-
-#td4, #td7, #td13, #td16, #td22, #td25, #td31, #td34, #td40, #td43, #td49, #td52, #td58, #td61, #td67, #td70, #td76, #td79, #tdo4, #tdo7, #tdo13, #tdo16, #tdo22, #tdo25, #tdo31, #tdo34, #tdo40, #tdo43, #tdo49, #tdo52, #tdo58, #tdo61, #tdo67, #tdo70, #tdo76, #tdo79, #tds4, #tds7, #tds13, #tds16, #tds22, #tds25, #tds31, #tds34, #tds40, #tds43, #tds49, #tds52, #tds58, #tds61, #tds67, #tds70, #tds76, #tds79 {
-  border-left: 3px solid black;
-}
-
-#tr3, #tr6 {
-  border-top: 3px solid black;
-}
-
-#original-board td {
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  font-size: 18px;
-}
-
-#original-board table {
+.chart-container{
   margin: auto;
 }
 
-#solved-board td {
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  font-size: 18px;
+.axis text {
+  font-size: 12px;
+  fill: #777;
 }
 
-#solved-board table{
-  margin: auto;
+.axis path {
+  display: none;
 }
 
-#solved-board h3{
-  text-align: center
+.axis line {
+  stroke-width:1px;
+  stroke: #ccc;
+  stroke-dasharray: 2px 2px;
 }
 
-#original-board h3{
-  text-align: center
-}
-
-#impossible_board_alert{
-  text-align: center;
-  margin: auto;
-  margin-top: 20px;
-}
-
-.footer{
-  margin-bottom: 20px;
-  position: absolute;
-  bottom: 0;
-}
-
-.footer-names {
-  text-align: center;
-}
-
-.footer-names a{
-  color: black;
+.bar{
+  fill:white;
+  stroke : black;
 }
