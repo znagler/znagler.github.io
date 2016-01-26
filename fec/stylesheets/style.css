@@ -23,6 +23,11 @@ svg {
 }
 
 .bar{
-  fill:white;
+  /*fill:white;*/
   stroke : black;
+}
+
+.percentage {
+  font-size: 14px;
+  fill: #DB2828;
 }

@@ -1,18 +1,14 @@
 Global = {}
 $( document ).ready(function(){
-  var o = {i1: 1,i2: 2,i3: 3,i4: 4}
-
-  setUpOccupationDropdown()
-  $('.ui.dropdown').dropdown();
+  setOccupationDropdown()
   setPredictButton()
   setInput()
-  buildGraph()
+  buildDefaultGraph()
 });
 
-function buildGraph(){
+function buildDefaultGraph(){
 
-
-  defaultData = [
+  var defaultData = [
   {candidate:"Carson",probability: .214},
   {candidate:"Sanders",probability: .201},
   {candidate:"Cruz",probability: .189},
@@ -34,11 +30,6 @@ function buildGraph(){
        xAxis = d3.svg.axis()
            .scale(xScale)
            .orient("bottom");
-       //
-      //  var yAxis = d3.svg.axis()
-      //      .scale(yScale)
-      //      .orient("left")
-      //      .ticks(10, "%");
 
   svg = d3.select(".chart-container").append("svg")
      .attr("width", width + margin.left + margin.right)
@@ -46,7 +37,17 @@ function buildGraph(){
    .append("g")
      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-     xScale.domain(defaultData.map(function(d) { return d.candidate; }));
+     texture = textures.lines()
+     .lighter()
+    // .orientation("3/8", "7/8")
+    .stroke("#E8E8E8");
+
+     svg.call(texture);
+
+    //  svg.append("circle")
+
+
+     xScale.domain(defaultData.map(function(d) { return d.candidate ; }));
      yScale.domain([0, d3.max(defaultData, function(d) { return d.probability; })]);
 
      svg.append("g")
@@ -54,54 +55,53 @@ function buildGraph(){
          .attr("transform", "translate(0," + height + ")")
          .call(xAxis);
 
-    //  svg.append("g")
-    //      .attr("class", "y axis")
-    //      .call(yAxis)
-    //    .append("text")
-    //      .attr("transform", "rotate(-90)")
-    //      .attr("y", 6)
-    //      .attr("dy", ".71em")
-    //      .style("text-anchor", "end")
-    //      .text("Frequency");
+      //  svg.selectAllsvg.append("g")
+      //  .attr("class", "percentages")
+      //       .data(defaultData)
+      //       .enter()
 
-     svg.selectAll(".bar")
+
+     var svgEnter = svg.selectAll(".bar")
          .data(defaultData)
-       .enter().append("rect")
+       .enter()
+
+       svgEnter.append("rect")
          .attr("class", "bar")
+         .style("fill", texture.url())
          .attr("x", function(d) { return xScale(d.candidate); })
          .attr("width", xScale.rangeBand())
          .attr("y", function(d) { return yScale(d.probability); })
          .attr("height", function(d) { return height - yScale(d.probability); });
+
+         svgEnter
+        .append('text')
+        .attr("class", "percentage")
+        .attr("transform", function(d){ return "translate("+(xScale(d.candidate)+2)+"," + (height-3) + ")"})
+        .text(function(d){ return Math.round(d.probability*1000)/10 + "%"})
 }
 
-dummyNewData = [
-{candidate:"Rubio",probability: .114},
-{candidate:"Clinton",probability: .301},
-{candidate:"Bush",probability: .389},
-// {candidate:"Clinton",probability: 0},
-// {candidate:"Rubio",probability: .152},
-]
-
-dummyNewData2 = [
-{candidate:"Carson",probability: .214},
-{candidate:"Sanders",probability: .201},
-{candidate:"Cruz",probability: .189},
-{candidate:"Clinton",probability: .187},
-{candidate:"Rubio",probability: .052},
-{candidate:"Fiorina",probability: .052},
-{candidate:"Christie",probability: .052},
-]
-
 function updateChart(newData){
+  d3.selectAll('.percentage').remove()
   // svg.selectAll
    var d3Data = svg.selectAll(".bar")
       .data(newData)
 
     d3Data.enter().append("rect")
       .attr("class", "bar")
+      .style("fill", texture.url())
+
+
 
     xScale.domain(newData.map(function(d) { return d.candidate; }));
     yScale.domain([0, d3.max(newData, function(d) { return d.probability; })]);
+
+    svg.selectAll(".percentage")
+    .data(newData).enter()
+   .append('text')
+   .attr("class", "percentage")
+   .attr("transform", function(d){ return "translate("+(xScale(d.candidate)+2)+"," + (height-3) + ")"})
+   .text(function(d){ return Math.round(d.probability*1000)/10 + "%"})
+
 
     svg.selectAll(".bar")
     .transition()
@@ -119,7 +119,7 @@ function updateChart(newData){
      d3Data.exit().remove()
 }
 
-function setUpOccupationDropdown(){
+function setOccupationDropdown(){
   var html = "<option value=''>Occupation</option>"
   Global.occupations.forEach(function(str){
     var strMod = str.replace(/ /g,"*")
@@ -128,6 +128,7 @@ function setUpOccupationDropdown(){
     + "</option>"
   })
   $('.occupation-dropdown').html(html)
+  $('.ui.dropdown').dropdown();
 
 }
 
@@ -163,7 +164,7 @@ function displayResults(data){
     return d.probability > 0
   })
   .sort(function(a,b){return b.probability - a.probability})
-  // console.log(candsWithProbs)
+  .slice(0,10)
   updateChart(candsWithProbs)
 }
 
@@ -218,7 +219,7 @@ Global.occupations = [
 'ATTORNEY',
 'AUTHOR',
 'BANKER',
-'BANKING',
+// 'BANKING',
 'BOOKKEEPER',
 'BROKER',
 'BUILDER',
