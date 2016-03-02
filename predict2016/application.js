@@ -92,8 +92,6 @@ function updateChart(newData){
       .attr("class", "bar")
       .style("fill", texture.url())
 
-
-
     xScale.domain(newData.map(function(d) { return d.candidate; }));
     yScale.domain([0, d3.max(newData, function(d) { return d.probability; })]);
 
@@ -183,8 +181,10 @@ function updatePredictText(o){
 }
 
 function setInput(){
-  $('.i4').keypress(function(){
+  $('.i4').keypress(function(event){
+    console.log("tezt")
     if (!(event.charCode >= 48 && event.charCode <= 57)) return false
+    console.log("tezt2")
     $( ".predict" ).removeClass('disabled' );
   });
 
