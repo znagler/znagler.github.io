@@ -24,7 +24,8 @@
 
 <body>
 
-  <div style="padding-left:100px;margin-top:50px">
+  <div style="padding-left:100px;margin-top:50px;padding-right:100px">
+    <h1>Who did I donate to?</h1>
   <!-- <div class="form-group">
     <label for="i1">Name:</label>
     <input style="width:100px" class="form-control" id="i1">
@@ -48,8 +49,8 @@
     </div>
     <input class="i1" type="text" placeholder="ex. oprah">
   </div>
-  <br><br>
-  <select class="ui search dropdown state-dropdown i2">
+  <!-- <br><br> -->
+  <span style="margin:10px">and I'm from</span> <select class="ui search dropdown state-dropdown i2">
     <option value="">State</option>
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
@@ -103,21 +104,39 @@
     <option value="WI">Wisconsin</option>
     <option value="WY">Wyoming</option>
   </select>
+  <br><br>
+  <span style="margin-right:10px">My occupation is</span>
     <select class="ui search dropdown occupation-dropdown i3">
 
     </select>
-    <br><br>
+    <span style="margin:10px">and I donated</span>
     <div class="ui labeled input">
       <div class="ui label">
         $
       </div>
       <input class= "i4" type="text" placeholder="amount">
     </div>
-    <button class="ui red basic button disabled predict">Predict</button>
+    <br><br>
+    <span style="margin-right:10px">to the 2016 presidential campaign for</span>
+    <button class="ui red basic button disabled predict">Predict Candidate</button>
   <!-- <button class="btn btn-default predict">Submit</button> -->
+  <div class='chart-container'></div>
+
+  <p class="predict-text" style="text-align:center">
+    Knowing nothing about you, the predictor chooses <span class="prediction">Sanders</span> with a probability of <span class="prediction">25.1</span>%
+  </p>
+  <p>
+    Can attributes like first name and occupation reveal which presidential candidate you prefer?
+    Around 900,000 rows of data from the Federal Election Commission says the answer is yes, fairly well.
+    This app uses a trained random forest classifier to predict a candidate given some info, and on a cross-validated test set it's
+    accurate over 60% of the time.
+  </p>
+  <p>
+    Technologies used: python (sci-kit learn, pandas, flask), javascript (d3.js, jQuery)  and semantic-ui.
+  </p>
   </div>
   <br>
-  <div class='chart-container'></div>
+
 
 </body>
 </html>

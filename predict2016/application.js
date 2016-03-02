@@ -9,11 +9,13 @@ $( document ).ready(function(){
 function buildDefaultGraph(){
 
   var defaultData = [
-  {candidate:"Carson",probability: .214},
-  {candidate:"Sanders",probability: .201},
-  {candidate:"Cruz",probability: .189},
-  {candidate:"Clinton",probability: .187},
-  {candidate:"Rubio",probability: .052},
+    {candidate:"Sanders",probability: .251},
+    {candidate:"Clinton",probability: .197},
+  {candidate:"Carson",probability: .185},
+  {candidate:"Cruz",probability: .185},
+  {candidate:"Rubio",probability: .054},
+  {candidate:"Paul",probability: .029},
+  {candidate:"Bush",probability: .025},
   ]
 
   margin = {top: 20, right: 10, bottom: 30, left: 10};
@@ -40,7 +42,7 @@ function buildDefaultGraph(){
      texture = textures.lines()
      .lighter()
     // .orientation("3/8", "7/8")
-    .stroke("#E8E8E8");
+    .stroke("#7FDBFF");
 
      svg.call(texture);
 
@@ -155,6 +157,7 @@ function displayResults(data){
   $( ".predict" ).removeClass('loading')
   $( ".predict" ).removeClass('disabled')
   results  = data.results[0]
+  console.log(data)
   var candsWithProbs = Object.keys(results).map(function(key){
     var cand = Global.cands[+key.slice(1)].split(",")[0]
     var prob = results[key]
@@ -165,7 +168,18 @@ function displayResults(data){
   })
   .sort(function(a,b){return b.probability - a.probability})
   .slice(0,10)
+
+  console.log(candsWithProbs)
   updateChart(candsWithProbs)
+  updatePredictText(candsWithProbs[0])
+}
+
+function updatePredictText(o){
+  var html = "The predictor chooses "
+  + "<span class='prediction'> " + o.candidate+" </span>"
+  + "with a probability of <span class='prediction'> " + Math.round(o.probability*1000)/10+"% </span>"
+  $('.predict-text').html(html)
+
 }
 
 function setInput(){
@@ -194,6 +208,7 @@ Global.cands = [
 'Rubio, Marco',
 'Sanders, Bernard',
 'Santorum, Richard J.',
+'Stein, Jill',
 'Trump, Donald J.',
 'Walker, Scott',
 'Webb, James Henry Jr.'
@@ -201,6 +216,9 @@ Global.cands = [
 
 
 Global.occupations = [
+'NOT EMPLOYED',
+'STUDENT',
+'RETIRED',
 'ACCOUNT MANAGER',
 'ACCOUNTANT',
 // 'ACCOUNTING',
@@ -350,10 +368,9 @@ Global.occupations = [
 'MEDICAL DOCTOR',
 'MILITARY',
 'MINISTER',
-'MOM',
+// 'MOM',
 'MUSICIAN',
-'NONE',
-'NOT EMPLOYED',
+// 'NONE',
 'NURSE',
 'NURSE PRACTITIONER',
 'OCCUPATIONAL THERAPIST',
@@ -413,7 +430,7 @@ Global.occupations = [
 'RESEARCHER',
 'RESTAURANT OWNER',
 'RETAIL',
-'RETIRED',
+// 'RETIRED',
 // 'RETIRED TEACHER',
 // 'RN',
 'SALES',
@@ -435,7 +452,7 @@ Global.occupations = [
 'SOFTWARE ENGINEER',
 'STORE MANAGER',
 'STRATEGIST',
-'STUDENT',
+// 'STUDENT',
 'SUPERVISOR',
 'SURGEON',
 'SYSTEMS ENGINEER',
