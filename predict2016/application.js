@@ -182,9 +182,7 @@ function updatePredictText(o){
 
 function setInput(){
   $('.i4').keypress(function(event){
-    console.log("tezt")
     if (!(event.charCode >= 48 && event.charCode <= 57)) return false
-    console.log("tezt2")
     $( ".predict" ).removeClass('disabled' );
   });
 
