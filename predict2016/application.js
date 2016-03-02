@@ -177,7 +177,7 @@ function displayResults(data){
 function updatePredictText(o){
   var html = "The predictor chooses "
   + "<span class='prediction'> " + o.candidate+" </span>"
-  + "with a probability of <span class='prediction'> " + Math.round(o.probability*1000)/10+" </span%>"
+  + "with a probability of <span class='prediction'> " + Math.round(o.probability*1000)/10+" </span>%"
   $('.predict-text').html(html)
 
 }
