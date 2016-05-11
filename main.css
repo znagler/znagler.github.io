@@ -32,8 +32,19 @@ i:hover {
     color:#565653;
 }
 
+.in-title-link,in-title-link:visited{
+    color:#565653;
+}
+
+
+
+.in-title-link:hover{
+  color:black
+
+}
+
 h1,
-h2, 
+h2,
 h3,
 h4,
 h5,
@@ -273,7 +284,7 @@ label {
  * of the mobile and tablet styles.
  */
 /*@media (min-width: 78em) {
-     We increase the header font size even more 
+     We increase the header font size even more
     .splash-head {
         font-size: 300%;
     }
