@@ -147,6 +147,7 @@ function setPredictButton(){
 	  console.log(o)
 	$.ajax({
 	  dataType: "jsonp",
+	  jsonp: false,
 	  jsonpCallback: 'callback',
 	  url: "http://znagler.pythonanywhere.com",
 	  data: o,
