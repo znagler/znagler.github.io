@@ -158,6 +158,29 @@ function setPredictButton(){
 
 }
 
+
+function callback(data){
+  $( ".predict" ).removeClass('loading')
+  $( ".predict" ).removeClass('disabled')
+  results  = data.results[0]
+  console.log(data)
+  var candsWithProbs = Object.keys(results).map(function(key){
+    var cand = Global.cands[+key.slice(1)].split(",")[0]
+    var prob = results[key]
+    return {candidate:cand,probability:prob}
+  })
+  .filter(function(d){
+    return d.probability > 0
+  })
+  .sort(function(a,b){return b.probability - a.probability})
+  .slice(0,10)
+
+  console.log(candsWithProbs)
+  updateChart(candsWithProbs)
+  updatePredictText(candsWithProbs[0])
+}
+
+
 function displayResults(data){
   $( ".predict" ).removeClass('loading')
   $( ".predict" ).removeClass('disabled')
