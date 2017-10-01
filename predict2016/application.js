@@ -193,7 +193,7 @@ function displayResults(data){
   $( ".predict" ).removeClass('loading')
   $( ".predict" ).removeClass('disabled')
 //   results  = data.results[0]
-results = JSON.parse(data);
+results = JSON.parse(data).results[0];;
   console.log(data)
   var candsWithProbs = Object.keys(results).map(function(key){
     var cand = Global.cands[+key.slice(1)].split(",")[0]
