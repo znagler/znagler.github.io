@@ -35,27 +35,35 @@
 
 
 </head>
+<style>
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    margin-top:10px;
+    border-radius: 10px;
+}
 
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+</style>
 <body>
 
   <div style="padding-left:100px;margin-top:50px;padding-right:100px">
     <h1>Who did I donate to?</h1>
-  <!-- <div class="form-group">
-    <label for="i1">Name:</label>
-    <input style="width:100px" class="form-control" id="i1">
-  </div>
-  <div class="form-group">
-    <label for="i2">State:</label>
-    <input style="width:100px" class="form-control" id="i2">
-  </div>
-  <div class="form-group">
-    <label for="i3">Occupation:</label>
-    <input style="width:100px" class="form-control" id="i3">
-  </div>
-  <div class="form-group">
-    <label for="i4">Quantity:</label>
-    <input style="width:100px" class="form-control" id="i4">
-  </div> -->
+
 
   <div class="ui labeled input ">
     <div class="ui label">
@@ -133,6 +141,12 @@
     <br><br>
     <span style="margin-right:10px">to the 2016 presidential campaign for</span>
     <button class="ui red basic button disabled predict">Predict Candidate</button>
+    
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Loading... </strong> The server is taking longer than expected. Please check out the <a href="https://github.com/znagler/predict2016/blob/master/main.ipynb">IPython Notebook</a> and return back.
+</div>
+
   <!-- <button class="btn btn-default predict">Submit</button> -->
   <div class='chart-container'></div>
 
