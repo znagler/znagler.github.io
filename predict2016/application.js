@@ -160,7 +160,7 @@ function setPredictButton(){
 	  data: o,
 	  success: displayResults
 	});
-	global.timeout = setTimeout(function(){
+	Global.timeout = setTimeout(function(){
 		console.log('time...')
 		$('.alert').show()
 	},1000)
