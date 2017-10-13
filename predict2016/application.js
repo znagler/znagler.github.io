@@ -172,6 +172,7 @@ function setPredictButton(){
 
 function callback(data){
 clearTimeout(Global.timeout);
+$('.alert').hide()
   $( ".predict" ).removeClass('loading')
   $( ".predict" ).removeClass('disabled')
   results  = data.results[0]
