@@ -160,6 +160,10 @@ function setPredictButton(){
 	  data: o,
 	  success: displayResults
 	});
+	global.timeout = setTimeout(function(){
+		console.log('time...')
+		$('.alert').show()
+	},1000)
 // 	  $.getJSON( "http://znagler.pythonanywhere.com",o,displayResults)
 
 	});
