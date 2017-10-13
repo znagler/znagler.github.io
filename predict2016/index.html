@@ -37,7 +37,6 @@
 </head>
 <style>
 .alert {
-    visibility: hidden;
     padding: 20px;
     background-color: white;
     color: black;
@@ -145,7 +144,7 @@
     <span style="margin-right:10px">to the 2016 presidential campaign for</span>
     <button class="ui red basic button disabled predict">Predict Candidate</button>
     
-<div class="alert">
+<div class="alert" hidden>
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
   <strong>Loading... </strong> The server is taking longer than expected. Please check out the <a target="_blank" href="https://github.com/znagler/predict2016/blob/master/main.ipynb">IPython Notebook</a> and return back.
 </div>
