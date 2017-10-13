@@ -161,9 +161,8 @@ function setPredictButton(){
 	  success: displayResults
 	});
 	Global.timeout = setTimeout(function(){
-		console.log('time...')
 		$('.alert').show()
-	},1000)
+	},8000)
 // 	  $.getJSON( "http://znagler.pythonanywhere.com",o,displayResults)
 
 	});
@@ -172,6 +171,7 @@ function setPredictButton(){
 
 
 function callback(data){
+clearTimeout(Global.timeout);
   $( ".predict" ).removeClass('loading')
   $( ".predict" ).removeClass('disabled')
   results  = data.results[0]
