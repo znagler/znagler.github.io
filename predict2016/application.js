@@ -156,7 +156,7 @@ function setPredictButton(){
 // 	});		
 	$.ajax({
 	  dataType: "text",
-	  url: "https://znagler.pythonanywhere.com",
+	  url: window.location.protocol+"//znagler.pythonanywhere.com",
 	  data: o,
 	  success: displayResults
 	});
