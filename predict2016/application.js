@@ -194,6 +194,7 @@ function callback(data){
 
 
 function displayResults(data){
+console.log("displayResults", data)
 clearTimeout(Global.timeout);
 $('.alert').hide()	
   $( ".predict" ).removeClass('loading')
