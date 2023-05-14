@@ -41,13 +41,9 @@ function buildDefaultGraph(){
 
      texture = textures.lines()
      .lighter()
-    // .orientation("3/8", "7/8")
     .stroke("#7FDBFF");
 
      svg.call(texture);
-
-    //  svg.append("circle")
-
 
      xScale.domain(defaultData.map(function(d) { return d.candidate ; }));
      yScale.domain([0, d3.max(defaultData, function(d) { return d.probability; })]);
@@ -56,12 +52,6 @@ function buildDefaultGraph(){
          .attr("class", "x axis x-axis")
          .attr("transform", "translate(0," + height + ")")
          .call(xAxis);
-
-      //  svg.selectAllsvg.append("g")
-      //  .attr("class", "percentages")
-      //       .data(defaultData)
-      //       .enter()
-
 
      var svgEnter = svg.selectAll(".bar")
          .data(defaultData)
@@ -155,6 +145,7 @@ function setPredictButton(){
 // 	  success: displayResults
 // 	});
 	var queryParams = "i1=" + encodeURIComponent(i1) + "&i2=" + i2 + "&i3=" + i3 + "&i4=" + i4
+	console.log(queryParams, queryParams)
 	$.ajax({
 	  dataType: "text",
 	  url: "https://hq33siilacynsmmt4rkgewxcoi0optah.lambda-url.us-east-1.on.aws/?message1=test1&" + queryParams,
