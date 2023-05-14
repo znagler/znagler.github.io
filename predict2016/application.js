@@ -145,7 +145,7 @@ function setPredictButton(){
 // 	  success: displayResults
 // 	});
 	var queryParams = "i1=" + encodeURIComponent(i1) + "&i2=" + i2 + "&i3=" + i3 + "&i4=" + i4
-	console.log(queryParams, queryParams)
+	console.log("queryParams", queryParams)
 	$.ajax({
 	  dataType: "text",
 	  url: "https://hq33siilacynsmmt4rkgewxcoi0optah.lambda-url.us-east-1.on.aws/?" + queryParams,
