@@ -154,7 +154,7 @@ function setPredictButton(){
 // 	  data: o,
 // 	  success: displayResults
 // 	});
-	var queryParams = "i1=" + i1 + "i2=" + i2 + "i3=" + i3 + "i4=" + i4
+	var queryParams = "i1=" + encodeURIComponent(i1) + "&i2=" + i2 + "&i3=" + i3 + "&i4=" + i4
 	$.ajax({
 	  dataType: "text",
 	  url: "https://hq33siilacynsmmt4rkgewxcoi0optah.lambda-url.us-east-1.on.aws/?message1=test1&" + queryParams,
