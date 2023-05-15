@@ -139,14 +139,14 @@ function setPredictButton() {
     const i2 = $('.i2').dropdown('get value')
     const i3 = $('.i3').dropdown('get value').split('*').join(' ')
     const i4 = $('.i4').val()
-    const o = { i1, i2, i3, i4 }
-    console.log(o)
+    const userInput = { i1, i2, i3, i4 }
+    console.log(userInput)
 
     // make an AJAX request to get predictions
     $.ajax({
       dataType: 'text',
       url: 'https://hq33siilacynsmmt4rkgewxcoi0optah.lambda-url.us-east-1.on.aws/',
-      data: o,
+      data: userInput,
       success: displayResults,
     })
     // set a timeout to show an alert if the response takes too long
