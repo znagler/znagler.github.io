@@ -1,230 +1,214 @@
-Global = {}
-$( document ).ready(function(){
-  setOccupationDropdown()
-  setPredictButton()
-  setInput()
-  buildDefaultGraph()
+// Declare variables at the beginning of the script
+const Global = {};
+let margin, width, height, xScale, yScale, xAxis, svg, texture;
+
+// Call initialization functions when document is ready
+$(document).ready(function() {
+  setOccupationDropdown();
+  setPredictButton();
+  setInput();
+  buildDefaultGraph();
 });
 
-function buildDefaultGraph(){
+// Refactored function to build default graph
+function buildDefaultGraph() {
+  const defaultData = [    { candidate: "Sanders", probability: 0.251 },    { candidate: "Clinton", probability: 0.197 },    { candidate: "Carson", probability: 0.185 },    { candidate: "Cruz", probability: 0.185 },    { candidate: "Rubio", probability: 0.054 },    { candidate: "Paul", probability: 0.029 },    { candidate: "Bush", probability: 0.025 }  ];
 
-  var defaultData = [
-    {candidate:"Sanders",probability: .251},
-    {candidate:"Clinton",probability: .197},
-  {candidate:"Carson",probability: .185},
-  {candidate:"Cruz",probability: .185},
-  {candidate:"Rubio",probability: .054},
-  {candidate:"Paul",probability: .029},
-  {candidate:"Bush",probability: .025},
-  ]
+  margin = { top: 20, right: 10, bottom: 30, left: 10 };
+  width = 800 - margin.left - margin.right;
+  height = 400 - margin.top - margin.bottom;
 
-  margin = {top: 20, right: 10, bottom: 30, left: 10};
+  xScale = d3.scale
+    .ordinal()
+    .rangeRoundBands([0, width], 0.5);
 
-     width = 800 - margin.left - margin.right,
-     height = 400 - margin.top - margin.bottom;
+  yScale = d3.scale
+    .linear()
+    .range([height, 0]);
 
-     xScale = d3.scale.ordinal()
-         .rangeRoundBands([0, width], .5);
+  xAxis = d3.svg
+    .axis()
+    .scale(xScale)
+    .orient("bottom");
 
-     yScale = d3.scale.linear()
-         .range([height, 0]);
+  svg = d3
+    .select(".chart-container")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-       xAxis = d3.svg.axis()
-           .scale(xScale)
-           .orient("bottom");
-
-  svg = d3.select(".chart-container").append("svg")
-     .attr("width", width + margin.left + margin.right)
-     .attr("height", height + margin.top + margin.bottom)
-   .append("g")
-     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-     texture = textures.lines()
-     .lighter()
+  texture = textures.lines()
+    .lighter()
     .stroke("#7FDBFF");
 
-     svg.call(texture);
+  svg.call(texture);
 
-     xScale.domain(defaultData.map(function(d) { return d.candidate ; }));
-     yScale.domain([0, d3.max(defaultData, function(d) { return d.probability; })]);
+  xScale.domain(defaultData.map(function(d) { return d.candidate; }));
+  yScale.domain([0, d3.max(defaultData, function(d) { return d.probability; })]);
 
-     svg.append("g")
-         .attr("class", "x axis x-axis")
-         .attr("transform", "translate(0," + height + ")")
-         .call(xAxis);
+  svg.append("g")
+    .attr("class", "x axis x-axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
 
-     var svgEnter = svg.selectAll(".bar")
-         .data(defaultData)
-       .enter()
+  const svgEnter = svg.selectAll(".bar")
+    .data(defaultData)
+    .enter();
 
-       svgEnter.append("rect")
-         .attr("class", "bar")
-         .style("fill", texture.url())
-         .attr("x", function(d) { return xScale(d.candidate); })
-         .attr("width", xScale.rangeBand())
-         .attr("y", function(d) { return yScale(d.probability); })
-         .attr("height", function(d) { return height - yScale(d.probability); });
-
-         svgEnter
-        .append('text')
-        .attr("class", "percentage")
-        .attr("transform", function(d){ return "translate("+(xScale(d.candidate)+2)+"," + (height-3) + ")"})
-        .text(function(d){ return Math.round(d.probability*1000)/10 + "%"})
-}
-
-function updateChart(newData){
-  d3.selectAll('.percentage').remove()
-  // svg.selectAll
-   var d3Data = svg.selectAll(".bar")
-      .data(newData)
-
-    d3Data.enter().append("rect")
-      .attr("class", "bar")
-      .style("fill", texture.url())
-
-    xScale.domain(newData.map(function(d) { return d.candidate; }));
-    yScale.domain([0, d3.max(newData, function(d) { return d.probability; })]);
-
-    svg.selectAll(".percentage")
-    .data(newData).enter()
-   .append('text')
-   .attr("class", "percentage")
-   .attr("transform", function(d){ return "translate("+(xScale(d.candidate)+2)+"," + (height-3) + ")"})
-   .text(function(d){ return Math.round(d.probability*1000)/10 + "%"})
-
-
-    svg.selectAll(".bar")
-    .transition()
-    .duration(500)
-    .attr("y", function(d) { return yScale(d.probability); })
+  svgEnter.append("rect")
+    .attr("class", "bar")
+    .style("fill", texture.url())
     .attr("x", function(d) { return xScale(d.candidate); })
     .attr("width", xScale.rangeBand())
+    .attr("y", function(d) { return yScale(d.probability); })
     .attr("height", function(d) { return height - yScale(d.probability); });
 
-    svg.selectAll('.x-axis')
+  svgEnter.append("text")
+    .attr("class", "percentage")
+    .attr("transform", function(d) { return "translate(" + (xScale(d.candidate) + 2) + "," + (height - 3) + ")"; })
+    .text(function(d) { return Math.round(d.probability * 1000) / 10 + "%"; });
+}
+
+function updateChart(newData) {
+  // remove all elements with the class "percentage"
+  d3.selectAll('.percentage').remove()
+
+  // select all existing .bar elements and bind newData to them
+  const bars = svg.selectAll('.bar').data(newData)
+
+  // add a new rectangle for each new data point
+  bars.enter().append('rect')
+    .attr('class', 'bar')
+    .style('fill', texture.url())
+
+  // update the x and y scales with the new data
+  xScale.domain(newData.map(d => d.candidate))
+  yScale.domain([0, d3.max(newData, d => d.probability)])
+
+  // add a new text element for each new data point and bind newData to them
+  svg.selectAll('.percentage')
+    .data(newData)
+    .enter()
+    .append('text')
+    .attr('class', 'percentage')
+    .attr('transform', d => `translate(${xScale(d.candidate) + 2},${height - 3})`)
+    .text(d => `${Math.round(d.probability * 1000) / 10}%`)
+
+  // update the existing bars with the new data
+  bars.transition().duration(500)
+    .attr('y', d => yScale(d.probability))
+    .attr('x', d => xScale(d.candidate))
+    .attr('width', xScale.rangeBand())
+    .attr('height', d => height - yScale(d.probability))
+
+  // update the x-axis with the new data
+  svg.selectAll('.x-axis')
     .transition()
     .duration(500)
-     .call(xAxis);
+    .call(xAxis)
 
-     d3Data.exit().remove()
+  // remove any excess bars
+  bars.exit().remove()
 }
 
-function setOccupationDropdown(){
-  var html = "<option value=''>Occupation</option>"
-  Global.occupations.forEach(function(str){
-    var strMod = str.replace(/ /g,"*")
-    html += "<option value="+strMod+">"
-    + str
-    + "</option>"
+function setOccupationDropdown() {
+  // create an options HTML string for the occupation dropdown
+  let html = "<option value=''>Occupation</option>"
+  Global.occupations.forEach(str => {
+    const strMod = str.replace(/ /g, '*')
+    html += `<option value=${strMod}>${str}</option>`
   })
+  // set the HTML of the occupation dropdown and initialize the dropdown
   $('.occupation-dropdown').html(html)
-  $('.ui.dropdown').dropdown();
-
+  $('.ui.dropdown').dropdown()
 }
 
-function setPredictButton(){
-	$( ".predict" ).click(function( event ) {
-	  event.preventDefault();
-    if ($( ".predict" ).hasClass('disabled')) return
-    $( ".predict" ).addClass('loading')
-    $( ".predict" ).addClass('disabled')
+function setPredictButton() {
+  // add a click event listener to the predict button
+  $('.predict').click(event => {
+    event.preventDefault()
+    // if the button is disabled, do nothing
+    if ($('.predict').hasClass('disabled')) return
+    // add loading and disabled classes to the button
+    $('.predict').addClass('loading disabled')
 
-	  var i1 = $('.i1').val().toUpperCase()
-	  var i2 = $('.i2').dropdown('get value')
-	  var i3 = $('.i3').dropdown('get value').split('*').join(' ')
-	  var i4 = $('.i4').val()
-	  var o = {i1: i1,i2: i2,i3: i3,i4: i4}
-	  console.log(o)
-		
-// 	$.ajax({
-// 	  crossOrigin: true,
-// 	  type : "GET",
-// 	  dataType: "json",
-// 	  url: "http://znagler.pythonanywhere.com",
-// 	  data: o,
-// 	  success: displayResults
-// 	});
-	var queryParams = "i1=" + encodeURIComponent(i1) + "&i2=" + i2 + "&i3=" + i3 + "&i4=" + i4
-	console.log("queryParams", queryParams)
-	$.ajax({
-	  dataType: "text",
-	  url: "https://hq33siilacynsmmt4rkgewxcoi0optah.lambda-url.us-east-1.on.aws/",
-	  data: o,
-	  success: displayResults
-	});
-	Global.timeout = setTimeout(function(){
-		$('.alert').show()
-	},8000)
-// 	  $.getJSON( "http://znagler.pythonanywhere.com",o,displayResults)
+    // get the input values and store them in an object
+    const i1 = $('.i1').val().toUpperCase()
+    const i2 = $('.i2').dropdown('get value')
+    const i3 = $('.i3').dropdown('get value').split('*').join(' ')
+    const i4 = $('.i4').val()
+    const o = { i1, i2, i3, i4 }
+    console.log(o)
 
-	});
-
-}
-
-
-function callback(data){
-
-  $( ".predict" ).removeClass('loading')
-  $( ".predict" ).removeClass('disabled')
-  results  = data.results[0]
-  console.log(data)
-  var candsWithProbs = Object.keys(results).map(function(key){
-    var cand = Global.cands[+key.slice(1)].split(",")[0]
-    var prob = results[key]
-    return {candidate:cand,probability:prob}
+    // make an AJAX request to get predictions
+    $.ajax({
+      dataType: 'text',
+      url: 'https://hq33siilacynsmmt4rkgewxcoi0optah.lambda-url.us-east-1.on.aws/',
+      data: o,
+      success: displayResults,
+    })
+    // set a timeout to show an alert if the response takes too long
+    Global.timeout = setTimeout(() => {
+      $('.alert').show()
+    }, 8000)
   })
-  .filter(function(d){
-    return d.probability > 0
-  })
-  .sort(function(a,b){return b.probability - a.probability})
-  .slice(0,10)
+}
 
-  console.log(candsWithProbs)
-  updateChart(candsWithProbs)
-  updatePredictText(candsWithProbs[0])
+const updatePredictText = ({ candidate, probability }) => {
+  const html = `The predictor chooses <span class='prediction'> ${candidate} </span> with a probability of <span class='prediction'> ${Math.round(probability * 1000) / 10}</span>%`;
+  $('.predict-text').html(html);
 }
 
 
-function displayResults(data){
-console.log("displayResults", data)
-clearTimeout(Global.timeout);
-$('.alert').hide()	
-  $( ".predict" ).removeClass('loading')
-  $( ".predict" ).removeClass('disabled')
-//   results  = data.results[0]
-results = JSON.parse(data).results[0];;
-  console.log(data)
-  var candsWithProbs = Object.keys(results).map(function(key){
-    var cand = Global.cands[+key.slice(1)].split(",")[0]
-    var prob = results[key]
-    return {candidate:cand,probability:prob}
-  })
-  .filter(function(d){
-    return d.probability > 0
-  })
-  .sort(function(a,b){return b.probability - a.probability})
-  .slice(0,10)
+const displayResults = (data) => {
+  console.log('displayResults', data);
+  clearTimeout(Global.timeout);
+  $('.alert').hide();
+  $('.predict').removeClass('loading disabled');
+  const results = JSON.parse(data).results[0];
+  const candsWithProbs = Object.keys(results)
+    .map((key) => {
+      const cand = Global.cands[+key.slice(1)].split(',')[0];
+      const prob = results[key];
+      return { candidate: cand, probability: prob };
+    })
+    .filter((d) => d.probability > 0)
+    .sort((a, b) => b.probability - a.probability)
+    .slice(0, 10);
+  console.log(candsWithProbs);
+  updateChart(candsWithProbs);
+  updatePredictText(candsWithProbs[0]);
+};
 
-  console.log(candsWithProbs)
-  updateChart(candsWithProbs)
-  updatePredictText(candsWithProbs[0])
-}
-
-function updatePredictText(o){
-  var html = "The predictor chooses "
-  + "<span class='prediction'> " + o.candidate+" </span>"
-  + "with a probability of <span class='prediction'> " + Math.round(o.probability*1000)/10+"</span>%"
-  $('.predict-text').html(html)
-
-}
-
-function setInput(){
-  $('.i4').keypress(function(event){
-    if (!(event.charCode >= 48 && event.charCode <= 57)) return false
-    $( ".predict" ).removeClass('disabled' );
+const setInput = () => {
+  $('.i4').keypress((event) => {
+    if (!(event.charCode >= 48 && event.charCode <= 57)) {
+      return false;
+    }
+    $('.predict').removeClass('disabled');
   });
+};
 
-}
+const callback = (data) => {
+  $('.predict').removeClass('loading disabled');
+  const results = data.results[0];
+  console.log(data);
+  const candsWithProbs = Object.keys(results)
+    .map((key) => {
+      const cand = Global.cands[+key.slice(1)].split(',')[0];
+      const prob = results[key];
+      return { candidate: cand, probability: prob };
+    })
+    .filter((d) => d.probability > 0)
+    .sort((a, b) => b.probability - a.probability)
+    .slice(0, 10);
+  console.log(candsWithProbs);
+  updateChart(candsWithProbs);
+  updatePredictText(candsWithProbs[0]);
+};
+
 Global.cands = [
 'Bush, Jeb',
 'Carson, Benjamin S.',
