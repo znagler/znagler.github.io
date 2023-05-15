@@ -177,7 +177,6 @@ const displayResults = (data) => {
     .filter((d) => d.probability > 0)
     .sort((a, b) => b.probability - a.probability)
     .slice(0, 10);
-  console.log(candsWithProbs);
   updateChart(candsWithProbs);
   updatePredictText(candsWithProbs[0]);
 };
@@ -194,7 +193,6 @@ const setInput = () => {
 const callback = (data) => {
   $('.predict').removeClass('loading disabled');
   const results = data.results[0];
-  console.log(data);
   const candsWithProbs = Object.keys(results)
     .map((key) => {
       const cand = Global.cands[+key.slice(1)].split(',')[0];
@@ -204,7 +202,7 @@ const callback = (data) => {
     .filter((d) => d.probability > 0)
     .sort((a, b) => b.probability - a.probability)
     .slice(0, 10);
-  console.log(candsWithProbs);
+  
   updateChart(candsWithProbs);
   updatePredictText(candsWithProbs[0]);
 };
